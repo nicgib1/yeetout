@@ -1,2 +1,2 @@
-# meetOut
+# yeetOut
 hackathon 2019
