@@ -6,4 +6,4 @@ hackathon 2019
 * mobile focus
 * mobile links to activities go to new page
 * Desktop links to activities pops up the activity
-* 
+* Hosting on AWS Elastic Beanstalk or Heroku
