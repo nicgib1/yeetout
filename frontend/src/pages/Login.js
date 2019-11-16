@@ -20,7 +20,7 @@ function Login() {
 
   const renderRedirect = () => {
     if (redirect) {
-      return <Redirect to="/" />;
+      return <Redirect to={{ pathname: "/", state: { id: true } }} />;
     }
   };
 
