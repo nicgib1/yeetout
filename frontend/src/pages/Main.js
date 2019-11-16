@@ -40,6 +40,7 @@ class Main extends Component {
               <ActivityCard
                 key={item.id}
                 name={item.name}
+                id={item.id}
                 owner={item.owner_id}
                 description={item.description}
                 location={item.location}
