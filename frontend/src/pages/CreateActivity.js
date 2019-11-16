@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { withRouter, Redirect } from "react-router-dom";
 import yeetoutService from "../services/yeetout.service";
-import "../App.css";
+import "../Login.css";
 
 function CreateActivity() {
   // const tagsList = ['outdoors', 'indoors', 'sports', 'concert'];
@@ -53,22 +53,23 @@ function CreateActivity() {
     <div className="App-header">
       {renderRedirect()}
       <h2>Create an Activity</h2>
-      <label>
+      <label className="description">
         Activity Name:
-        <input
-          type="text"
+        <textarea
+          className="desc-field"
           value={activityName}
           onChange={e => setActivity(e.target.value)}
         />
       </label>
-      <label>
+      <label className="description">
         Description:
         <textarea
+          className="desc-field"
           value={description}
           onChange={e => setDescription(e.target.value)}
         />
       </label>
-      <label>
+      <label className="location">
         Location:
         <input
           type="text"
@@ -76,16 +77,7 @@ function CreateActivity() {
           onChange={e => setLocation(e.target.value)}
         />
       </label>
-      {/* <label>
-          Tags:
-          <select multiple={true} value={tagsList} onChange={e => setTags(e.target.value)}>
-            <option value="outdoors">Outdoors</option>
-            <option value="indoors">Indoors</option>
-            <option value="sports">Sports</option>
-            <option value="Concerts">Concert</option>
-          </select>
-        </label> */}
-      <label>
+      <label className="date">
         Date:
         <input
           type="date"
@@ -93,7 +85,7 @@ function CreateActivity() {
           onChange={e => setDate(e.target.value)}
         />
       </label>
-      <label>
+      <label className="time">
         Time:
         <input
           type="time"
@@ -101,7 +93,7 @@ function CreateActivity() {
           onChange={e => setTime(e.target.value)}
         />
       </label>
-      <label>
+      <label className="min-age">
         MinAge:
         <input
           type="text"
@@ -109,7 +101,7 @@ function CreateActivity() {
           onChange={e => setMinAge(e.target.value)}
         />
       </label>
-      <label>
+      <label className="max-age">
         MaxAge:
         <input
           type="text"
@@ -117,7 +109,7 @@ function CreateActivity() {
           onChange={e => setMaxAge(e.target.value)}
         />
       </label>
-      <label>
+      <label className="cost">
         Cost:
         <input
           type="text"
@@ -125,7 +117,7 @@ function CreateActivity() {
           onChange={e => setCost(e.target.value)}
         />
       </label>
-      <label>
+      <label className="attendies">
         Attendies:
         <input
           type="text"
@@ -133,7 +125,12 @@ function CreateActivity() {
           onChange={e => setAttendies(e.target.value)}
         />
       </label>
-      <input type="button" value="Submit" onClick={handleSubmit} />
+      <input
+        className="Login-btn"
+        type="button"
+        value="Submit"
+        onClick={handleSubmit}
+      />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { withRouter, Redirect } from "react-router-dom";
 import yeetoutService from "../services/yeetout.service";
-import "../App.css";
+import "../Login.css";
 
 function CreateAccout() {
   const [email, setEmail] = useState("");
@@ -39,7 +39,7 @@ function CreateAccout() {
     <div className="App-header">
       {renderRedirect()}
       <h2>Create an Accout!</h2>
-      <label>
+      <label className="Email">
         Email:
         <input
           type="email"
@@ -47,7 +47,7 @@ function CreateAccout() {
           onChange={e => setEmail(e.target.value)}
         />
       </label>
-      <label>
+      <label className="first-name">
         First Name:
         <input
           type="text"
@@ -55,7 +55,7 @@ function CreateAccout() {
           onChange={e => setFirstName(e.target.value)}
         />
       </label>
-      <label>
+      <label className="last-name">
         Last Name:
         <input
           type="text"
@@ -63,7 +63,7 @@ function CreateAccout() {
           onChange={e => setLastName(e.target.value)}
         />
       </label>
-      <label>
+      <label className="birth">
         Birth Date:
         <input
           type="date"
@@ -71,7 +71,7 @@ function CreateAccout() {
           onChange={e => setDate(e.target.value)}
         />
       </label>
-      <label>
+      <label className="password">
         Password:
         <input
           type="password"
@@ -79,11 +79,20 @@ function CreateAccout() {
           onChange={e => setPassword(e.target.value)}
         />
       </label>
-      <label>
+      <label className="bio">
         Bio:
-        <textarea value={bio} onChange={e => setBio(e.target.value)} />
+        <textarea 
+          className="bio-field"
+          value={bio} 
+          onChange={e => setBio(e.target.value)} 
+        />
       </label>
-      <input type="button" value="Submit" onClick={handleSubmit} />
+      <input 
+        className="Login-btn" 
+        type="button" 
+        value="Submit" 
+        onClick={handleSubmit} 
+      />
     </div>
   );
 }
