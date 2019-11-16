@@ -12,7 +12,9 @@ function Header() {
         profile
       </NavLink>
       </div>
-      <p>YEETOUT</p>
+      <NavLink exact activeClassName="active" to="/" style={{ textDecoration: 'none'}}>
+        YEETOUT
+      </NavLink>
       <div className="subnav">
       <NavLink exact activeClassName="active" to="/createactivity" style={{ textDecoration: 'none' }}>
         +
