@@ -61,9 +61,10 @@ function CreateActivity() {
           onChange={e => setActivity(e.target.value)}
         />
       </label>
-      <label>
+      <label className="description">
         Description:
         <textarea
+          className="desc-field"
           value={description}
           onChange={e => setDescription(e.target.value)}
         />
