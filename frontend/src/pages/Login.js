@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { withRouter, Link, Redirect } from "react-router-dom";
 import yeetoutService from "../services/yeetout.service";
-import "../App.css";
+import "../Login.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -25,11 +25,12 @@ function Login() {
   };
 
   return (
-    <div className="App-header">
+    <div className="App-Logo App-header">
       {renderRedirect()}
-      <label>
+      <h1 className="App-logo">YEETOUT</h1>
+      <label className="Email">
         Email:
-        <input
+        <input 
           type="email"
           value={email}
           onChange={e => setEmail(e.target.value)}
@@ -43,8 +44,12 @@ function Login() {
           onChange={e => setPassword(e.target.value)}
         />
       </label>
-      <Link to="/createaccount">Need an account?</Link>
-      <input type="button" value="Submit" onClick={handleSubmit} />
+      <input 
+        className="Login-btn"
+        type="button" 
+        value="Submit" 
+        onClick={handleSubmit} />
+      <Link className="App-link" to="/createaccount">Need an account?</Link>
     </div>
   );
 }
