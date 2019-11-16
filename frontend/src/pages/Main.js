@@ -9,10 +9,11 @@ class Main extends Component {
       this.handleSubmit = this.handleSubmit.bind(this);
     }
   
-    handleSubmit(e) {
-      alert('The value is: ' + this.input.value);
-      e.preventDefault();
-    }
+    // handleClick = (user) => {
+    //     saveUser(user).then(() =>
+    //     this.props.history.push('/login')
+    //     )
+    // }
   
     render() {
       return (
