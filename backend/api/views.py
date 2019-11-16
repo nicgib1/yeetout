@@ -1,13 +1,13 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Profile
 from django.contrib.auth.models import User
 from django.core.validators import validate_email
 from django.contrib.auth.hashers import make_password
 from django.core.exceptions import ValidationError
 from rest_framework import status
-
-# Create your views here.
+from rest_framework import viewsets
+from .serializers import ActivitySerializer
+from .models import Activity, Profile
 
 
 class Hello(APIView):
@@ -116,3 +116,7 @@ class Register(APIView):
 
         else:
             raise ValidationError('Invalid Input Param Passed')
+
+class ActivityViewSet(viewsets.ModelViewSet):
+    queryset = Activity.objects.all()
+    serializer_class = ActivitySerializer

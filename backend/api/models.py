@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Activity(models.Model):
     name = models.CharField(max_length=30)
-    discription = models.CharField(max_length=1000)
+    description = models.CharField(max_length=1000)
     id = models.AutoField(primary_key=True)
     image = models.ImageField()
     location = models.CharField(max_length=100)
