@@ -1,4 +1,20 @@
 # yeetOut
+
+## Run API
+1. Create a Virtual Environment
+   1. Run `python3 -m venv env` to create a virtual environment
+   2. Run `source env/bin/activate` to activate the virtual environment
+2. Install dependencies
+   1. Navigate to `backend/`
+   2. Run `pip install -r requirements.txt`
+3. Perform database migrations by running `python manage.py migrate`
+4. Run the server with `python manage.py runserver`
+
+## Run Frontend
+1. Navigate to `frontend/`
+2. Install dependencies with `npm install`
+3. Start with `npm start`
+
 hackathon 2019
 ---------------------------------------------------------------------------
 * Django rest backend
