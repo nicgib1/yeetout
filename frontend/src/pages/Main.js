@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { isLoggedIn } from "../utils/utils";
-import yeetoutService from '../services/yeetout.service'
-import ActivityCard from '../components/ActivityCard';
+import yeetoutService from "../services/yeetout.service";
+import ActivityCard from "../components/ActivityCard";
 import "../App.css";
 
 class Main extends Component {
@@ -10,13 +10,7 @@ class Main extends Component {
     super(props);
     this.state = { loggedin: isLoggedIn(), refresh: false, activities: [] };
   }
-  UNSAFE_componentWillUpdate() {
-    console.log(this.props.location.state.id);
-    this.setState = { refresh: this.props.location.state.id };
-    if (this.state.id) {
-      console.log("REFRESH");
-    }
-  }
+
   componentDidMount() {
     yeetoutService.getActivities().then(response => {
       this.setState({ activities: response.activities });
