@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import yeetoutService from "../services/yeetout.service";
 import "../Login.css";
 
@@ -10,6 +10,7 @@ function CreateAccout() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [bio, setBio] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   const handleSubmit = () => {
     // yeetoutService
@@ -24,10 +25,19 @@ function CreateAccout() {
     setFirstName("");
     setLastName("");
     setBio("");
+
+    setRedirect(true);
+  };
+
+  const renderRedirect = () => {
+    if (redirect) {
+      return <Redirect to={{ pathname: "/login", state: { id: true } }} />;
+    }
   };
 
   return (
     <div className="App-header">
+      {renderRedirect()}
       <h2>Create an Accout!</h2>
       <label className="Email">
         Email:

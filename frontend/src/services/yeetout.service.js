@@ -32,6 +32,34 @@ let YeetoutService = class YeetoutService {
         .catch(error => reject(error));
     });
   }
+  createactivity(name, description, location, date, time, min_age, max_age, cost, attendies, token) {
+    const axiosInstance = axios.create({
+      //baseURL: getBaseUrl(),
+      timeout: 5000,
+      headers: {
+        Authorization: `Token ${token}`,
+        "Content-Type": "application/json"
+      }
+    });
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(yeetoutApiService.createActivity(), {
+          name: name,
+          description: description,
+          location: location,
+          date: date,
+          time: time,
+          min_age: min_age,
+          max_age: max_age,
+          cost: cost, 
+          attendies: attendies
+        })
+        .then(response => {
+          resolve(response.data);
+        })
+        .catch(error => reject(error));
+    });
+  }
   validateAuthToken(token) {
     const axiosInstance = axios.create({
       //baseURL: getBaseUrl(),
@@ -48,39 +76,16 @@ let YeetoutService = class YeetoutService {
         .then(response => resolve())
         .catch(error => reject());
     });
-    // return new Promise((resolve, reject) => {
-    //   console.log(this.getAuthenticatedHeaders(token));
-    //   const header =this.getAuthenticatedHeaders(token);
-    //   axios
-    //     .get(
-    //       yeetoutApiService.validateAuthToken(),
-    //       {},
-    //       {
-    //         headers: {...header}
-    //       }
-    //     )
-    //     .then(() => resolve())
-    //     .catch(() => reject());
-    // });
-    // const headers = this.getAuthenticatedHeaders(token);
-    // try {
-    //   const response = await fetch(yeetoutApiService.validateAuthToken(), {
-    //     headers: {
-    //       ...headers
-    //     }
-    //   });
-
-    //   if (response.status !== 200) {
-    //     return false;
-    //   }
-
-    //   const json = await response.json();
-    //   return json.valid;
-    // } catch (error) {
-    //   console.error(error);
-    //   return false;
-    // }
   }
+
+  getActivities() {
+    return new Promise((resolve, reject) => {
+      axios.get(yeetoutApiService.getActivities())
+        .then(response => resolve(response.data))
+        .catch(error => reject(error))
+    });
+  }
+
   getAuthenticatedHeaders(token) {
     return {
       "Content-Type": "application/json",
