@@ -1,72 +1,81 @@
-import React, { useState } from 'react';  
-import { withRouter } from "react-router-dom";
+import React, { useState } from "react";
+import { withRouter, Redirect } from "react-router-dom";
 import yeetoutService from "../services/yeetout.service";
 import "../Login.css";
 
 function CreateActivity() {
-    // const tagsList = ['outdoors', 'indoors', 'sports', 'concert'];
-    const [activityName, setActivity] = useState("");
-    const [description, setDescription] = useState("");
-    const [location, setLocation] =  useState("");
-    const [date, setDate] = useState("");
-    const [time, setTime] = useState("");
-    // const [tags, setTags] = useState("");
-    const [minAge, setMinAge] = useState("");
-    const [maxAge, setMaxAge] = useState("");
-    const [cost, setCost] =  useState("");
-    const [attendies, setAttendies] = useState("");
+  // const tagsList = ['outdoors', 'indoors', 'sports', 'concert'];
+  const [activityName, setActivity] = useState("");
+  const [description, setDescription] = useState("");
+  const [location, setLocation] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  // const [tags, setTags] = useState("");
+  const [minAge, setMinAge] = useState("");
+  const [maxAge, setMaxAge] = useState("");
+  const [cost, setCost] = useState("");
+  const [attendies, setAttendies] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
+  const handleSubmit = () => {
+    yeetoutService.createactivity(
+      activityName,
+      description,
+      location,
+      date,
+      time,
+      minAge,
+      maxAge,
+      cost,
+      attendies,
+      localStorage.getItem("authToken")
+    );
+    // set
+    setActivity("");
+    setDescription("");
+    setLocation("");
+    setDate("");
+    setTime("");
+    setMinAge("");
+    setMaxAge("");
+    setCost("");
+    setAttendies("");
+    setRedirect(true);
+  };
 
-    const handleSubmit = () => {
-        yeetoutService.createactivity(activityName, description, location, date, time, minAge, maxAge, cost, attendies, localStorage.getItem("authToken"));
-        // set
-        setActivity("");
-        setDescription("");
-        setLocation("");
-        setDate("");
-        setTime("");
-        setMinAge("");
-        setMaxAge("");
-        setCost("");
-        setAttendies("");
+  const renderRedirect = () => {
+    if (redirect) {
+      return <Redirect to={{ pathname: "/" }} />;
     }
+  };
 
-    return (
-        <div className="App-header">
-        <h2>Create an Activity</h2>
-        <label>
-          Activity Name:
-          <input
-            type="text"
-            value={activityName}
-            onChange={e => setActivity(e.target.value)}
-          />
-        </label>
-        <label className="description">
-          Description:
-          <textarea 
+  return (
+    <div className="App-header">
+      {renderRedirect()}
+      <h2>Create an Activity</h2>
+      <label className="description">
+        Activity Name:
+        <textarea 
             className="desc-field" 
             value={description} 
             onChange={e => setDescription(e.target.value)} 
           />
-        </label>
-        <label className="location">
-          Location:
-          <input
-            type="text"
-            value={location}
-            onChange={e => setLocation(e.target.value)}
-          />
-        </label>
-        {/* <label>
-          Tags:
-          <select multiple={true} value={tagsList} onChange={e => setTags(e.target.value)}>
-            <option value="outdoors">Outdoors</option>
-            <option value="indoors">Indoors</option>
-            <option value="sports">Sports</option>
-            <option value="Concerts">Concert</option>
-          </select>
-        </label> */}
+      </label>
+      <label>
+        Description:
+        <textarea
+          value={description}
+          onChange={e => setDescription(e.target.value)}
+        />
+      </label>
+      <label className="location">
+        Location:
+        <input
+          type="text"
+          value={location}
+          onChange={e => setLocation(e.target.value)}
+        />
+      </label>
         <label className="date">
           Date:
           <input
@@ -126,4 +135,4 @@ function CreateActivity() {
     }
    
 
-  export default withRouter(CreateActivity);
+export default withRouter(CreateActivity);
