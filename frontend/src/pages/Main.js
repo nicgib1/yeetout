@@ -5,17 +5,19 @@ import { isLoggedIn } from "../utils/utils";
 import "../App.css";
 
 class Main extends Component {
-  componentDidMount() {
-    if (isLoggedIn()) {
-      console.log("here");
-    } else {
-    }
+  constructor(props) {
+    super(props);
+    this.state = { loggedin: isLoggedIn() };
   }
+  componentDidMount() {
+    this.setState = { loggedin: isLoggedIn() };
+  }
+
   render() {
     return (
       <header>
         <div className="App-header">
-          {isLoggedIn() && (
+          {!this.state.loggedin && (
             <>
               <Link to="/login">Login</Link>
               <Link to="/createaccount">Create Account</Link>
