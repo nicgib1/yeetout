@@ -2,7 +2,8 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch,
+  
 } from 'react-router-dom';
 import Main from './pages/Main';
 import './App.css';
@@ -14,8 +15,8 @@ function App() {
     <main>
       <Router>
         <Switch>
-          <Route path='/' component={Login}/>
-          <Route path='login' component={Main}/>
+          <Route path='/' exact component={Main}/>
+          <Route path='/login' component={Login}/>
         </Switch>
       </Router>
     </main>
