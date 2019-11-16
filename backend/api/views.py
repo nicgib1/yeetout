@@ -214,3 +214,16 @@ class CreateActivity(APIView):
         activity.save()
 
         return Response({'Success': 'Success'})
+
+
+class JoinActivity(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        data = request.data
+        if 'activity_id' not in data:
+            return Response({'Error': 'Forgot activity_id'}, status=status.HTTP_400_BAD_REQUEST)
+
+        Activity.objects.get(id=data['activity_id']).joined.add(request.user)
+
+        return Response({'Success': 'Success'})

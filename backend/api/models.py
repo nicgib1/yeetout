@@ -15,6 +15,7 @@ class Activity(models.Model):
     max_age = models.IntegerField()
     cost = models.DecimalField(max_digits=12, decimal_places=2)
     attendies = models.IntegerField()
+    joined = models.ManyToManyField(User, related_name='joined')
 
 
 class Tag(models.Model):
