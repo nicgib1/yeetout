@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Activity(models.Model):
     name = models.CharField(max_length=30)
     discription = models.CharField(max_length=1000)
@@ -14,10 +15,12 @@ class Activity(models.Model):
     cost = models.DecimalField(max_digits=12, decimal_places=2)
     attendies = models.IntegerField()
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     dob = models.DateField()
     bio = models.TextField(max_length=200)
-    rating = models.DecimalField(decimal_places=2, max_digits=3)
-    picture = models.ImageField(upload_to='profileImages/')
-
+    rating = models.DecimalField(
+        decimal_places=2, max_digits=3, null=True, blank=True, default=None)
+    picture = models.ImageField(
+        upload_to='profileImages/', null=True, blank=True, default=None)

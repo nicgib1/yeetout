@@ -2,6 +2,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Profile
 from django.contrib.auth.models import User
+from django.core.validators import validate_email
+from django.contrib.auth.hashers import make_password
+from django.core.exceptions import ValidationError
+from rest_framework import status
 
 # Create your views here.
 
@@ -10,9 +14,10 @@ class Hello(APIView):
     def get(self, request):
         return Response('Hello')
 
+
 class Register(APIView):
     def post(self, request):
-        required_params = ['password', 'email', 'dob', 'firstName', 'lastName']
+        required_params = ['password', 'email', 'firstName', 'lastName', 'dob']
         try:
             data = request.data
             if all(key in data for key in required_params):
@@ -21,11 +26,11 @@ class Register(APIView):
                         required_params[0], data[required_params[0]])
                     email = self.validate_required_input(
                         required_params[1], data[required_params[1]])
-                    dob = self.validate_required_input(
-                        required_params[2], data[required_params[2]])
                     firstName = self.validate_required_input(
-                        required_params[3], data[required_params[3]])
+                        required_params[2], data[required_params[2]])
                     lastName = self.validate_required_input(
+                        required_params[3], data[required_params[3]])
+                    dob = self.validate_required_input(
                         required_params[4], data[required_params[4]])
 
                 except ValidationError as er:
@@ -34,21 +39,22 @@ class Register(APIView):
                 new_user = User()
                 new_user.password = make_password(password)
                 new_user.email = email
+                new_user.username = email
                 new_user.first_name = firstName
                 new_user.last_name = lastName
 
                 new_user.save()
 
                 new_profile = Profile()
+                new_profile.user = new_user
                 new_profile.dob = dob
-                
-                new_profile.picture = data['picture']
-                new_profile.rating = None
 
                 try:
                     new_profile.bio = data['bio'] if data['bio'] is not None else ''
                 except KeyError:
                     print('Error while parsing bio')
+
+                new_profile.save()
 
                 return Response({'Status': 'Success'}, status=status.HTTP_201_CREATED)
 
@@ -89,6 +95,24 @@ class Register(APIView):
                     return value
             else:
                 raise ValidationError('Invalid Email')
+
+        elif param == 'firstName':
+            if value is not None and type(value) == str and len(value) > 0:
+                return value
+            else:
+                raise ValidationError('Invalid firstName')
+
+        elif param == 'lastName':
+            if value is not None and type(value) == str and len(value) > 0:
+                return value
+            else:
+                raise ValidationError('Invalid lastName')
+
+        elif param == 'dob':
+            if value is not None and type(value) == str and len(value) == 10:
+                return value
+            else:
+                raise ValidationError('Invalid dob')
 
         else:
             raise ValidationError('Invalid Input Param Passed')
