@@ -55,11 +55,11 @@ function CreateActivity() {
       <h2>Create an Activity</h2>
       <label className="description">
         Activity Name:
-        <textarea 
-            className="desc-field" 
-            value={description} 
-            onChange={e => setDescription(e.target.value)} 
-          />
+        <textarea
+          className="desc-field"
+          value={activityName}
+          onChange={e => setActivity(e.target.value)}
+        />
       </label>
       <label>
         Description:
@@ -76,63 +76,62 @@ function CreateActivity() {
           onChange={e => setLocation(e.target.value)}
         />
       </label>
-        <label className="date">
-          Date:
-          <input
-            type="date"
-            value={date}
-            onChange={e => setDate(e.target.value)}
+      <label className="date">
+        Date:
+        <input
+          type="date"
+          value={date}
+          onChange={e => setDate(e.target.value)}
         />
-        </label>
-        <label className="time">
-          Time:
-          <input
-            type="time"
-            value={time}
-            onChange={e => setTime(e.target.value)}
+      </label>
+      <label className="time">
+        Time:
+        <input
+          type="time"
+          value={time}
+          onChange={e => setTime(e.target.value)}
         />
-        </label>
-        <label className="min-age">
-          MinAge:
-          <input
-            type="text"
-            value={minAge}
-            onChange={e => setMinAge(e.target.value)}
-          />
-        </label>
-        <label className="max-age">
-          MaxAge:
-          <input
-            type="text"
-            value={maxAge}
-            onChange={e => setMaxAge(e.target.value)}
-          />
-        </label>
-        <label className="cost">
-          Cost:
-          <input
-            type="text"
-            value={cost}
-            onChange={e => setCost(e.target.value)}
-          />
-        </label>
-        <label className="attendies">
-          Attendies:
-          <input
-            type="text"
-            value={attendies}
-            onChange={e => setAttendies(e.target.value)}
-          />
-        </label>
-        <input 
-          className="Login-btn" 
-          type="button" 
-          value="Submit" 
-          onClick={handleSubmit} 
+      </label>
+      <label className="min-age">
+        MinAge:
+        <input
+          type="text"
+          value={minAge}
+          onChange={e => setMinAge(e.target.value)}
         />
-      </div>
-      );
-    }
-   
+      </label>
+      <label className="max-age">
+        MaxAge:
+        <input
+          type="text"
+          value={maxAge}
+          onChange={e => setMaxAge(e.target.value)}
+        />
+      </label>
+      <label className="cost">
+        Cost:
+        <input
+          type="text"
+          value={cost}
+          onChange={e => setCost(e.target.value)}
+        />
+      </label>
+      <label className="attendies">
+        Attendies:
+        <input
+          type="text"
+          value={attendies}
+          onChange={e => setAttendies(e.target.value)}
+        />
+      </label>
+      <input
+        className="Login-btn"
+        type="button"
+        value="Submit"
+        onClick={handleSubmit}
+      />
+    </div>
+  );
+}
 
 export default withRouter(CreateActivity);
