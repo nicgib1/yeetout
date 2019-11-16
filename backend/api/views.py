@@ -118,13 +118,19 @@ class Register(APIView):
             raise ValidationError('Invalid Input Param Passed')
 
 
+class ValidateToken(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        return Response({'valid': True})
+
+
 class Activities(APIView):
     def get(self, request):
         activities = Activity.objects.all()
         activity_list = []
 
         for activity in activities:
-            print('HEEEERRRREEEE')
             item = {
                 'id': activity.id,
                 'name': activity.name,

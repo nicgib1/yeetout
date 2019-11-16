@@ -7,5 +7,6 @@ urlpatterns = [
     path('login/', obtain_auth_token),
     path('register/', views.Register.as_view()),
     path('activities/', views.Activities.as_view()),
-    path('createactivity/', views.CreateActivity.as_view())
+    path('createactivity/', views.CreateActivity.as_view()),
+    path('validatetoken/', views.ValidateToken.as_view())
 ]
