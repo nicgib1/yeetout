@@ -1,8 +1,9 @@
 import React, { useState } from 'react';  
 import { withRouter } from "react-router-dom";
+import yeetoutService from "../services/yeetout.service";
 import "../App.css";
 
-function ActivityCreation() {
+function CreateActivity() {
     // const tagsList = ['outdoors', 'indoors', 'sports', 'concert'];
     const [activityName, setActivity] = useState("");
     const [description, setDescription] = useState("");
@@ -17,7 +18,7 @@ function ActivityCreation() {
 
 
     const handleSubmit = () => {
-        alert('this function has not yet been implemented');        
+        yeetoutService.createactivity(activityName, description, location, date, time, minAge, maxAge, cost, attendies, localStorage.getItem("authToken"));
         // set
         setActivity("");
         setDescription("");
@@ -116,4 +117,4 @@ function ActivityCreation() {
     }
    
 
-  export default withRouter(ActivityCreation);
+  export default withRouter(CreateActivity);
