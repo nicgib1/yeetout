@@ -18,6 +18,10 @@ let YeetoutApiService = class YeetoutApiService {
   validateAuthToken() {
     return `${this.apiLocation}/validatetoken/`;
   }
+
+  getActivities() {
+    return `${this.apiLocation}/activities/`
+  }
 };
 
 const yeetoutApiService = new YeetoutApiService();
