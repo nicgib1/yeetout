@@ -4,11 +4,7 @@ import {Link, withRouter} from "react-router-dom";
 import '../App.css';
 
 class Main extends Component {
-    constructor(props) {
-      super(props);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
-  
+    
     // handleClick = (user) => {
     //     saveUser(user).then(() =>
     //     this.props.history.push('/login')
@@ -20,6 +16,7 @@ class Main extends Component {
         <header>
             <div className="App-header">
                 <Link to="/login">Login</Link>
+                <Link to="/createaccount">Create Account</Link>
                 <h1>YEETOUT</h1>
                 <p>+</p>
             </div>
