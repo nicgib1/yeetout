@@ -33,19 +33,35 @@ let YeetoutService = class YeetoutService {
     });
   }
   validateAuthToken(token) {
-    return new Promise((resolve, reject) => {
-      console.log(this.getAuthenticatedHeaders(token));
-      axios
-        .get(
-          yeetoutApiService.validateAuthToken(),
-          {},
-          {
-            headers: this.getAuthenticatedHeaders(token)
-          }
-        )
-        .then(() => resolve())
-        .catch(() => reject());
+    const axiosInstance = axios.create({
+      //baseURL: getBaseUrl(),
+      timeout: 5000,
+      headers: {
+        Authorization: `Token ${token}`,
+        "Content-Type": "application/json"
+      }
     });
+
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .get(yeetoutApiService.validateAuthToken())
+        .then(response => resolve())
+        .catch(error => reject());
+    });
+    // return new Promise((resolve, reject) => {
+    //   console.log(this.getAuthenticatedHeaders(token));
+    //   const header =this.getAuthenticatedHeaders(token);
+    //   axios
+    //     .get(
+    //       yeetoutApiService.validateAuthToken(),
+    //       {},
+    //       {
+    //         headers: {...header}
+    //       }
+    //     )
+    //     .then(() => resolve())
+    //     .catch(() => reject());
+    // });
     // const headers = this.getAuthenticatedHeaders(token);
     // try {
     //   const response = await fetch(yeetoutApiService.validateAuthToken(), {
