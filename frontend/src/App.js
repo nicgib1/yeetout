@@ -10,12 +10,15 @@ import './App.css';
 import Login from './pages/Login';
 import CreateAccout from './pages/CreateAccount';
 import CreateActivity from './pages/CreateActivity'
+import Header from "./components/Header";
 
 function App() {
   return (
     <>
     <main>
       <Router>
+      <Header />
+
         <Switch>
           <Route path='/createactivity' component={CreateActivity}/>
           <Route path='/' exact component={Main}/>

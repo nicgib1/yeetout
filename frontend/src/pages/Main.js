@@ -16,7 +16,7 @@ class Main extends Component {
   render() {
     return (
       <header>
-        <div className="App-header">
+        <div className=".App-Body">
           {!this.state.loggedin && (
             <>
               <Link to="/login">Login</Link>
