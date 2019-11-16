@@ -30,9 +30,6 @@ class Main extends Component {
               <Link to="/createaccount">Create Account</Link>
             </>
           )}
-          <h1>YEETOUT</h1>
-          <Link to="/createactivity">+</Link>
-
         </div>
       </header>
     );

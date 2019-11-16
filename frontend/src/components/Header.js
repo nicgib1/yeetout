@@ -7,13 +7,17 @@ function Header() {
   return (
     <nav className="App-header">
       {/* <NavLink exact activeClassName */}
+      <div className="subnav">
       <NavLink exact activeClassName="active" to="/" style={{ textDecoration: 'none'}}>
         profile
       </NavLink>
+      </div>
       <p>YEETOUT</p>
+      <div className="subnav">
       <NavLink exact activeClassName="active" to="/createactivity" style={{ textDecoration: 'none' }}>
         +
       </NavLink>
+      </div>
     </nav>
   //   <header>
   //   <div className="App-header">

@@ -20,6 +20,19 @@
 
 }
 
+a { color: blue } /* Globally */
+
+a.subnav_add:visited {
+  color: blue;
+  text-decoration: none; 
+}
+
+a.subnav_add:hover, a.subnav_add:active {
+  text-decoration: none;  
+  color: white; 
+}
+
+a:hover, a:active { text-decoration: none; color:black }
 .App-Body {
   background-color: #282c34;
 }
