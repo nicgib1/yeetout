@@ -1,46 +1,53 @@
-import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { useState } from "react";
+import { withRouter, Link, Redirect } from "react-router-dom";
+import yeetoutService from "../services/yeetout.service";
+import "../App.css";
 
-function Login({ history }) {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [showErrorMsg, setShowErrorMsg] = useState(false);
-  const handleSubmit = async (e) => {
-      //@TODO: add this when we have the API
-    // const token = await todoService.getAuthToken(username, password);
-    // if (!token) {
-    //   setShowErrorMsg(true);
-    // } else {
-    //   setShowErrorMsg(false);
-    //   localStorage.setItem('authToken', token);
-    //   history.push('/');
-    // }
-    alert('The is note yet implemeneted: ' + this.input.value);
-    e.preventDefault();
+function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
+
+  const handleSubmit = () => {
+    yeetoutService
+      .login(email, password)
+      .then(response => localStorage.setItem("authToken", response.token));
+
+    setEmail("");
+    setPassword("");
+    setRedirect(true);
+  };
+
+  const renderRedirect = () => {
+    if (redirect) {
+      return <Redirect to="/" />;
+    }
   };
 
   return (
-    <>
-      {showErrorMsg && <h3>Invalid Credentials</h3>}
-      <label htmlFor='username'>Username:</label>
-      <input
-        name='username'
-        type='text'
-        value={username}
-        onChange={e => setUsername(e.target.value)}
-      />
-      <br />
-      <label htmlFor='password'>Password:</label>
-      <input
-        name='password'
-        type='password'
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-      />
-      <br />
-      <button onClick={handleSubmit}>Login</button>
-    </>
+    <div className="App-header">
+      {renderRedirect()}
+      <label>
+        Email:
+        <input
+          type="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+      </label>
+      <label>
+        Password:
+        <input
+          type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
+      </label>
+      <Link to="/createaccount">Need an account?</Link>
+      <input type="button" value="Submit" onClick={handleSubmit} />
+    </div>
   );
 }
 
 export default withRouter(Login);
+//export default Login;

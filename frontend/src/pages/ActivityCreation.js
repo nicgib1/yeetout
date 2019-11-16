@@ -12,15 +12,55 @@ class ActivityCreation extends Component{
   
     render() {
       return (
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Name:
-            <input type="text" ref={(input) => this.input = input} />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
+        <div className="App-header">
+        <h2>Create an Activity</h2>
+        <label>
+          Activity:
+          <input
+            type="activity"
+            value={activity}
+            onChange={e => setActivity(e.target.value)}
+          />
+        </label>
+        <label>
+          Description:
+          <textarea value={description} onChange={e => setDescription(e.target.value)} />
+        </label>
+        <label>
+          Party Size:
+          <input
+            type="text"
+            value={partySize}
+            onChange={e => setPartySize(e.target.value)}
+          />
+        </label>
+        <label>
+          Tags:
+          <select multiple={true} value={['outdoors', 'indoors', 'sports', 'concert']}>
+          {/* <select value={this.state.value} onChange={this.handleChange}>
+            <option value="outdoors">Outdoors</option>
+            <option value="indoors">Indoors</option>
+            <option value="sports">Sports</option>
+            <option value="Concerts">Concert</option>
+          </select> */}
+        </label>
+        <label>
+          Password:
+          <input
+            type="password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+        </label>
+        <label>
+          Bio:
+          <textarea value={bio} onChange={e => setBio(e.target.value)} />
+        </label>
+        <input type="button" value="Submit" onClick={handleSubmit} />
+      </div>
       );
     }
-  }
+}
+   
 
   export default ActivityCreation;

@@ -3,23 +3,25 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect
+  
 } from 'react-router-dom';
+import Main from './pages/Main';
 import './App.css';
-import ActivityCreation from './pages/ActivityCreation';
 import Login from './pages/Login';
+import CreateAccout from './pages/CreateAccount';
 
 function App() {
   return (
     <>
-      <h1>Todo List</h1>
-      <main>
-        <Router>
-          <Switch>
-            <Route path='/' exact component={Login} />
-          </Switch>
-        </Router>
-      </main>
+    <main>
+      <Router>
+        <Switch>
+          <Route path='/' exact component={Main}/>
+          <Route path='/login' component={Login}/>
+          <Route path='/createaccount' component={CreateAccout}/>
+        </Switch>
+      </Router>
+    </main>
     </>
   );
 }
