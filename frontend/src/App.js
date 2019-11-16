@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import './App.css';
 import ActivityCreation from './pages/ActivityCreation';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <main>
         <Router>
           <Switch>
-            <Route path='/' exact component={ActivityCreation} />
+            <Route path='/' exact component={Login} />
           </Switch>
         </Router>
       </main>
