@@ -8,6 +8,7 @@ import {
 import Main from './pages/Main';
 import './App.css';
 import Login from './pages/Login';
+import CreateAccout from './pages/CreateAccount';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Switch>
           <Route path='/' exact component={Main}/>
           <Route path='/login' component={Login}/>
+          <Route path='/createaccount' component={CreateAccout}/>
         </Switch>
       </Router>
     </main>

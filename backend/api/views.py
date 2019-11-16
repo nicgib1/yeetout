@@ -109,7 +109,7 @@ class Register(APIView):
                 raise ValidationError('Invalid lastName')
 
         elif param == 'dob':
-            if value is not None and type(value) == str and len(value) == 10:
+            if value is not None and type(value) == str:
                 return value
             else:
                 raise ValidationError('Invalid dob')
