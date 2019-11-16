@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Activity(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=1000)
     id = models.AutoField(primary_key=True)
@@ -10,10 +11,15 @@ class Activity(models.Model):
     location = models.CharField(max_length=100)
     date = models.DateField()
     time = models.TimeField()
-    min_ages = models.IntegerField()
-    max_ages = models.IntegerField()
+    min_age = models.IntegerField()
+    max_age = models.IntegerField()
     cost = models.DecimalField(max_digits=12, decimal_places=2)
     attendies = models.IntegerField()
+
+
+class Tag(models.Model):
+    activity = models.ForeignKey(Activity, on_delete=models.CASCADE)
+    tag = models.CharField(max_length=20)
 
 
 class Profile(models.Model):
