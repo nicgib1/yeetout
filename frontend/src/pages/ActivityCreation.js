@@ -1,17 +1,23 @@
 import React, { Component } from 'react';  
-class ActivityCreation extends Component{
-    constructor(props) {
-      super(props);
-      this.handleSubmit = this.handleSubmit.bind(this);
+import { withRouter } from "react-router-dom";
+import "../App.css";
+
+function CreateActivity() {
+    const tagsList = ['outdoors', 'indoors', 'sports', 'concert'];
+    const [activity, setActivity] = useState("");
+    const [description, setDescription] = useState("");
+    const [partySize, setPartySize] = useState("");
+    const [tags, setTags] = useState("");
+    const [age, setAge] = useState("");
+    const [location, setLocation] =  useState("");
+    const [cost, setCost] =  useState("");
+
+    const handleSubmit = () => {
+        alert('this function has not yet been implemented');        
+        // set
     }
-  
-    handleSubmit(e) {
-      alert('The value is: ' + this.input.value);
-      e.preventDefault();
-    }
-  
-    render() {
-      return (
+
+    return (
         <div className="App-header">
         <h2>Create an Activity</h2>
         <label>
@@ -36,31 +42,49 @@ class ActivityCreation extends Component{
         </label>
         <label>
           Tags:
-          <select multiple={true} value={['outdoors', 'indoors', 'sports', 'concert']}>
-          {/* <select value={this.state.value} onChange={this.handleChange}>
+          <select multiple={true} value={tagsList} onChange={e => setTags(e.target.value)}>
             <option value="outdoors">Outdoors</option>
             <option value="indoors">Indoors</option>
             <option value="sports">Sports</option>
             <option value="Concerts">Concert</option>
-          </select> */}
+          </select>
         </label>
         <label>
-          Password:
+          Cost:
           <input
-            type="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
+            type="text"
+            value={cost}
+            onChange={e => setCost(e.target.value)}
           />
         </label>
         <label>
-          Bio:
-          <textarea value={bio} onChange={e => setBio(e.target.value)} />
+          Age:
+          <input
+            type="text"
+            value={age}
+            onChange={e => setAge(e.target.value)}
+          />
+        </label>
+        <label>
+          Location:
+          <input
+            type="text"
+            value={location}
+            onChange={e => setLocation(e.target.value)}
+          />
+        </label>
+        <label>
+          Cost:
+          <input
+            type="text"
+            value={cost}
+            onChange={e => setCost(e.target.value)}
+          />
         </label>
         <input type="button" value="Submit" onClick={handleSubmit} />
       </div>
       );
     }
-}
    
 
-  export default ActivityCreation;
+  export default withRouter(ActivityCreation);

@@ -9,6 +9,7 @@ import Main from './pages/Main';
 import './App.css';
 import Login from './pages/Login';
 import CreateAccout from './pages/CreateAccount';
+import ActivityCreation from './pages/ActivityCreation'
 
 function App() {
   return (
@@ -16,9 +17,10 @@ function App() {
     <main>
       <Router>
         <Switch>
-          <Route path='/' exact component={Main}/>
+          <Route path='/ActivityCreation' component={ActivityCreation}/>
+          {/* <Route path='/' exact component={Main}/>
           <Route path='/login' component={Login}/>
-          <Route path='/createaccount' component={CreateAccout}/>
+          <Route path='/createaccount' component={CreateAccout}/> */}
         </Switch>
       </Router>
     </main>
