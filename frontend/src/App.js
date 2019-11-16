@@ -18,9 +18,9 @@ function App() {
       <Router>
         <Switch>
           <Route path='/ActivityCreation' component={ActivityCreation}/>
-          {/* <Route path='/' exact component={Main}/>
+          <Route path='/' exact component={Main}/>
           <Route path='/login' component={Login}/>
-          <Route path='/createaccount' component={CreateAccout}/> */}
+          <Route path='/createaccount' component={CreateAccout}/>
         </Switch>
       </Router>
     </main>
