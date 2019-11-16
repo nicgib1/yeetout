@@ -60,6 +60,26 @@ let YeetoutService = class YeetoutService {
         .catch(error => reject(error));
     });
   }
+  joinactivity(activity_id, token) {
+    const axiosInstance = axios.create({
+      //baseURL: getBaseUrl(),
+      timeout: 5000,
+      headers: {
+        Authorization: `Token ${token}`,
+        "Content-Type": "application/json"
+      }
+    });
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(yeetoutApiService.joinActivity(), {
+          activity_id: activity_id,
+        })
+        .then(response => {
+          resolve(response.data);
+        })
+        .catch(error => reject(error));
+    });
+  }
   validateAuthToken(token) {
     const axiosInstance = axios.create({
       //baseURL: getBaseUrl(),
