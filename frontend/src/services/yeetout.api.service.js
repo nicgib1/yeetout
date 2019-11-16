@@ -21,11 +21,14 @@ let YeetoutApiService = class YeetoutApiService {
 
 
   getActivities() {
-    return `${this.apiLocation}/activities/`
+    return `${this.apiLocation}/activities/`;
   }
   
   createActivity() {
     return `${this.apiLocation}/createactivity/`;
+  }
+  joinActiviy() {
+    return `${this.apiLocation}/activities/`;
   }
 };
 
