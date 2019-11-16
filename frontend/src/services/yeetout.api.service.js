@@ -19,8 +19,13 @@ let YeetoutApiService = class YeetoutApiService {
     return `${this.apiLocation}/validatetoken/`;
   }
 
+
   getActivities() {
     return `${this.apiLocation}/activities/`
+  }
+  
+  createActivity() {
+    return `${this.apiLocation}/createactivity/`;
   }
 };
 

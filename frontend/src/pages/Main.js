@@ -8,7 +8,14 @@ import "../App.css";
 class Main extends Component {
   constructor(props) {
     super(props);
-    this.state = { loggedin: isLoggedIn(), activities: [] };
+    this.state = { loggedin: isLoggedIn(), refresh: false, activities: [] };
+  }
+  UNSAFE_componentWillUpdate() {
+    console.log(this.props.location.state.id);
+    this.setState = { refresh: this.props.location.state.id };
+    if (this.state.id) {
+      console.log("REFRESH");
+    }
   }
   componentDidMount() {
     yeetoutService.getActivities().then(response => {
@@ -30,7 +37,7 @@ class Main extends Component {
               </>
             )}
             <h1>YEETOUT</h1>
-            <p>+</p>
+            <Link to="/createactivity">+</Link>
           </div>
         </header>
         <div>
