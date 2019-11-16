@@ -24,7 +24,8 @@ class Main extends Component {
             </>
           )}
           <h1>YEETOUT</h1>
-          <p>+</p>
+          <Link to="/createactivity">+</Link>
+
         </div>
       </header>
     );
