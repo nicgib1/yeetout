@@ -5,8 +5,8 @@ from django.core.validators import validate_email
 from django.contrib.auth.hashers import make_password
 from django.core.exceptions import ValidationError
 from rest_framework import status
-from rest_framework import viewsets
-from .serializers import ActivitySerializer
+from rest_framework.permissions import IsAuthenticated
+import datetime
 from .models import Activity, Profile
 
 
@@ -112,11 +112,99 @@ class Register(APIView):
             if value is not None and type(value) == str:
                 return value
             else:
-                raise ValidationError('Invalid dob')
+                raise ValidationError('Invalid DoB')
 
         else:
             raise ValidationError('Invalid Input Param Passed')
 
-class ActivityViewSet(viewsets.ModelViewSet):
-    queryset = Activity.objects.all()
-    serializer_class = ActivitySerializer
+
+class Activities(APIView):
+    def get(self, request):
+        activities = Activity.objects.all()
+        activity_list = []
+
+        for activity in activities:
+            print('HEEEERRRREEEE')
+            item = {
+                'id': activity.id,
+                'name': activity.name,
+                'owner_id': activity.owner.id,
+                'description': activity.description,
+                # 'image': activity.image,
+                'location': activity.location,
+                'date': activity.date,
+                'time': activity.time,
+                'min_age': activity.min_age,
+                'max_age': activity.max_age,
+                'cost': activity.cost,
+                'attendies': activity.attendies
+            }
+
+            activity_list.append(item)
+
+        content = {
+            'activities': activity_list
+        }
+
+        print(content)
+
+        return Response(content)
+
+
+class CreateActivity(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        data = request.data
+
+        activity = Activity()
+        activity.owner = request.user
+
+        if 'name' in data:
+            activity.name = data['name']
+        else:
+            activity.name = 'New Activity'
+
+        if 'description' in data:
+            activity.description = data['description']
+        else:
+            activity.description = ''
+
+        if 'location' in data:
+            activity.location = data['location']
+        else:
+            activity.location = ''
+
+        if 'date' in data:
+            activity.date = data['date']
+        else:
+            activity.date = '2019-11-16'
+
+        if 'time' in data:
+            activity.time = data['time']
+        else:
+            activity.time = '00:00:00'
+
+        if 'min_age' in data:
+            activity.min_age = data['min_age']
+        else:
+            activity.min_age = 0
+
+        if 'max_age' in data:
+            activity.max_age = data['max_age']
+        else:
+            activity.max_age = 100
+
+        if 'cost' in data:
+            activity.cost = data['cost']
+        else:
+            activity.cost = 0
+
+        if 'attendies' in data:
+            activity.attendies = data['attendies']
+        else:
+            activity.attendies = 10
+
+        activity.save()
+
+        return Response({'Success': 'Success'})
