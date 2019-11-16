@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { isLoggedIn } from "../utils/utils";
 import yeetoutService from '../services/yeetout.service'
-//import logo from '../logo.svg';
+import ActivityCard from '../components/ActivityCard';
 import "../App.css";
 
 class Main extends Component {
@@ -36,9 +36,19 @@ class Main extends Component {
         <div>
           {this.state.activities.map(item => {
             return (
-              <div key={item.id}>
-                <div>{item.name}</div>
-              </div>
+              <ActivityCard
+                key={item.id}
+                name={item.name}
+                owner={item.owner_id}
+                description={item.description}
+                location={item.location}
+                date={item.date}
+                time={item.time}
+                minAge={item.min_age}
+                maxAge={item.max_age}
+                cost={item.cost}
+                attendies={item.attendies}
+              />
             );
           })}
         </div>
