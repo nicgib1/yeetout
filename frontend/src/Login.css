@@ -72,3 +72,48 @@ input{
     position: relative;
     left:20px;
 }
+
+.description{
+    position: relative;
+    right:0px;
+}
+
+.desc-field{
+    position: relative;
+    left: 20px;
+}
+
+.location{
+    position: relative;
+    left: 32px;
+}
+
+.date{
+    position: relative;
+    left: 40px;
+}
+
+.time{
+    position: relative;
+    left: 15px;
+}
+
+.min-age{
+    position: relative;
+    left: 38px;
+}
+
+.max-age{
+    position: relative;
+    left: 36px;
+}
+
+.cost{
+    position: relative;
+    left: 56px;
+}
+
+.attendies{
+    position: relative;
+    left: 25px;
+}

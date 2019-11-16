@@ -48,7 +48,8 @@ function Login() {
         className="Login-btn"
         type="button" 
         value="Submit" 
-        onClick={handleSubmit} />
+        onClick={handleSubmit} 
+      />
       <Link className="App-link" to="/createaccount">Need an account?</Link>
     </div>
   );

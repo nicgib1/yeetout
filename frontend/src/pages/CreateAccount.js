@@ -88,7 +88,7 @@ function CreateAccout() {
         />
       </label>
       <input 
-        className="login-btn" 
+        className="Login-btn" 
         type="button" 
         value="Submit" 
         onClick={handleSubmit} 
